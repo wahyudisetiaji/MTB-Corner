@@ -3,6 +3,7 @@
         <h1>Register</h1>
         <v-divider class="my-3"></v-divider>
         <v-card class="register">
+                <h5 v-if="true">{{message}}</h5>
                 <v-form ref="form" v-model="valid" lazy-validation onSubmit="return false">
                     <v-text-field label="Username" :rules="usernameRules" v-model="username" required></v-text-field>
                     <v-text-field label="E-mail" :rules="emailRules" v-model="email" required></v-text-field>
@@ -37,14 +38,16 @@ export default {
     passwordRules: [
       v => !!v || 'Password is required',
       v => (v && v.length >= 5) || 'Password must be more than 5 characters'
-    ]
+    ],
+    message: '',
+    notif: false
   }),
   methods: {
     register () {
       if (this.$refs.form.validate()) {
         axios({
           method: 'POST',
-          url: `http://localhost:3000/users/register`,
+          url: `${api}/users/register`,
           data: {
             username: this.username,
             email: this.email,
@@ -58,7 +61,10 @@ export default {
             this.password = ''
           })
           .catch((err) => {
-            console.log(err.response)
+            if (err.response.data.message) {
+              this.notif = true
+              this.message = 'Account already exists !'
+            }
           })
       }
     },

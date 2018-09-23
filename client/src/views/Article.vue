@@ -38,11 +38,6 @@ export default {
       getarticles: ''
     }
   },
-  // methods: {
-  //   getarticles (value) {
-  //     console.log(value)
-  //   }
-  // },
   created () {
     let token = localStorage.getItem('token')
     if (token) {

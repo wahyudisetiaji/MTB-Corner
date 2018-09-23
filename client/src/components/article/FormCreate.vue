@@ -46,11 +46,11 @@ export default {
       let token = localStorage.getItem('token')
       let formData = new FormData()
       formData.append('image', this.image)
-      axios.post(`http://localhost:3000/articles/upload`, formData)
+      axios.post(`${api}/articles/upload`, formData)
         .then((result) => {
           axios({
             method: 'POST',
-            url: `http://localhost:3000/articles/create`,
+            url: `${api}/articles/create`,
             headers: {
               token
             },

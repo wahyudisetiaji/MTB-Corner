@@ -34,7 +34,7 @@ export default {
     let token = localStorage.getItem('token')
     axios({
       method: 'GET',
-      url: `http://localhost:3000/articles/myarticle`,
+      url: `${api}/articles/myarticle`,
       headers: {
         token
       }
@@ -51,7 +51,7 @@ export default {
       let token = localStorage.getItem('token')
       axios({
         method: 'DELETE',
-        url: `http://localhost:3000/articles/delete/${id}`,
+        url: `${api}/articles/delete/${id}`,
         headers: {
           token
         }
@@ -71,7 +71,7 @@ export default {
         let token = localStorage.getItem('token')
         axios({
           method: 'GET',
-          url: `http://localhost:3000/articles/myarticle`,
+          url: `${api}/articles/myarticle`,
           headers: {
             token
           }

@@ -31,7 +31,7 @@ export default {
     allArticles (category) {
       axios({
         method: 'GET',
-        url: `http://localhost:3000/articles/category/${category}`
+        url: `${api}/articles/category/${category}`
       })
         .then((result) => {
           let category = result.data.result

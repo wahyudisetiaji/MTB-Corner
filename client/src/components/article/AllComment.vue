@@ -22,7 +22,8 @@ export default {
   props: ['datadetail', 'tokendetail'],
   data () {
     return {
-      actions: ''
+      actions: '',
+      viewer: ''
     }
   },
   methods: {
@@ -34,7 +35,7 @@ export default {
       let token = localStorage.getItem('token')
       axios({
         method: 'PUT',
-        url: `http://localhost:3000/articles/comment/delete/${idArticle}`,
+        url: `${api}/comment/delete/${idArticle}`,
         headers: {
           token
         },
@@ -53,7 +54,7 @@ export default {
       let token = localStorage.getItem('token')
       axios({
         method: 'GET',
-        url: `http://localhost:3000/users`,
+        url: `${api}/users`,
         headers: {
           token
         }
@@ -75,7 +76,7 @@ export default {
         let id = this.$route.params.id
         axios({
           method: 'GET',
-          url: `http://localhost:3000/articles/article/${id}`
+          url: `${api}/articles/article/${id}`
         })
           .then((result) => {
             this.datadetail = result.data.articles

@@ -3,6 +3,7 @@
     <h1>Login</h1>
     <v-divider class="my-3"></v-divider>
         <v-card class="login">
+            <h5 v-if="true">{{message}}</h5>
             <v-form ref="form" v-model="valid" lazy-validation onSubmit="return false">
                 <v-text-field label="E-mail" :rules="emailRules" v-model="email" required></v-text-field>
                 <v-text-field type="password" :rules="passwordRules" :counter="5" v-model="password" label="Password" required></v-text-field>
@@ -33,7 +34,9 @@ export default {
       passwordRules: [
         v => !!v || 'Password is required',
         v => (v && v.length >= 5) || 'Password must be more than 5 characters'
-      ]
+      ],
+      notif: false,
+      message: ''
     }
   },
   methods: {
@@ -41,7 +44,7 @@ export default {
       if (this.$refs.form.validate()) {
         axios({
           method: 'POST',
-          url: `http://localhost:3000/users/login`,
+          url: `${api}/users/login`,
           data: {
             email: this.email,
             password: this.password
@@ -54,6 +57,10 @@ export default {
           })
           .catch((err) => {
             console.log(err.response)
+            if (err.response.data.message) {
+              this.notif = true
+              this.message = 'email/password wrong !'
+            }
           })
       }
     },

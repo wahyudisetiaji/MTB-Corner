@@ -47,11 +47,11 @@ export default {
       let token = localStorage.getItem('token')
       let formData = new FormData()
       formData.append('image', this.image)
-      axios.post(`http://localhost:3000/articles/upload`, formData)
+      axios.post(`${api}/articles/upload`, formData)
         .then((result) => {
           axios({
             method: 'PUT',
-            url: `http://localhost:3000/articles/update/${id}`,
+            url: `${api}/articles/update/${id}`,
             headers: {
               token
             },
@@ -86,7 +86,7 @@ export default {
       let id = this.$route.params.id
       axios({
         method: 'GET',
-        url: `http://localhost:3000/articles/article/${id}`
+        url: `${api}/articles/article/${id}`
       })
         .then((result) => {
           this.articleTitle = result.data.articles.articleTitle
