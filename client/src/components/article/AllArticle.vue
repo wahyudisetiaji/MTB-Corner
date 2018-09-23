@@ -10,9 +10,9 @@
                         <h3 class="headline">{{data.articleTitle}}</h3>
                         <h5 class="caption">Posted on {{ moment(data.createdAt).format("dddd, MMMM Do YYYY, h:mm") }} WIB, by {{data.userId.username}}</h5>
                     </div>
-                <v-btn v-if="tokenarticle" color="black" style="color:white" :to="`/article/detail/${data._id}`">Detail</v-btn><br>
+                <v-btn color="black" style="color:white" :to="`/article/detail/${data._id}`">Detail</v-btn><br>
                 <div>
-                  <span class="facebook caption">Share with <VueGoodshareFacebook :page_url="`https://mtb-corner.wahyudisetiaji.xyz`" title_social="Facebook" style="color:white;" has_icon><img :src="data.image" alt="image"></VueGoodshareFacebook></span>
+                  <span class="facebook caption">Share with <VueGoodshareFacebook :page_url="`https://mtb-corner.wahyudisetiaji.xyz/#/article/detail/${data._id}`" title_social="Facebook" style="color:white;" has_icon><img :src="data.image" alt="image"></VueGoodshareFacebook></span>
                 </div>
                 </v-card-text>
             </v-card>

@@ -13,7 +13,7 @@
             <div class="comment">
                 <v-text-field label="Comment" v-model="comment" required></v-text-field><br>
                 <p class="caption text-sm-right font-italic font-weight-light">
-                    <span class="facebook caption">Share with <VueGoodshareFacebook :page_url="`https://mtb-corner.wahyudisetiaji.xyz`" title_social="Facebook" style="color:white;" has_icon> <img :src="image" alt="image"></VueGoodshareFacebook></span>
+                    <span class="facebook caption">Share with <VueGoodshareFacebook :page_url="`https://mtb-corner.wahyudisetiaji.xyz/#/article/detail/${data._id}`" title_social="Facebook" style="color:white;" has_icon> <img :src="image" alt="image"></VueGoodshareFacebook></span>
                     <v-btn v-if="!tokenarticle" color="black" class="text-sm-right" style="color:white" to="/join/login">Please Login</v-btn>
                     <v-btn v-if="tokenarticle" color="black" class="text-sm-right" style="color:white" @click="createComment(data._id)">Comment</v-btn>
                     <v-btn color="black" class="text-sm-right"  style="color:white" to="/article">Back</v-btn>
