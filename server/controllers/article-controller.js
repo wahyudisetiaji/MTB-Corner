@@ -144,7 +144,7 @@ module.exports = {
         .then(result => {
   
           res.status(200).json({
-            message: "data my article",
+            message: "data category article",
             result
           });
   
@@ -194,13 +194,11 @@ module.exports = {
   },
 
  updateArticle: function(req, res) {
-    let id = req.params.id;
+   let id = req.params.id;
     
     Article.findOne({_id: id})
     .then((result) => {
-       
-      if (result.userId == req.user.id) {
-        
+      if (result.userId.toLocaleString() == req.user._id.toLocaleString()) {
         Article.updateOne(
           { _id: id },
           {
